@@ -106,6 +106,7 @@ export const Vortex = (props: VortexProps) => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawParticles(ctx);
+    // Move rendering glow off to reduce frame delay; keeping the look leaner
     renderGlow(canvas, ctx);
     renderToScreen(canvas, ctx);
 
@@ -171,13 +172,28 @@ export const Vortex = (props: VortexProps) => {
   ) => {
     ctx.save();
     ctx.lineCap = "round";
-    ctx.lineWidth = radius;
-    ctx.strokeStyle = `hsla(${hue},100%,60%,${fadeInOut(life, ttl)})`;
+    
+    const alpha = fadeInOut(life, ttl);
+    const colorCore = `hsla(${hue},100%,70%,${alpha})`;
+    const colorGlow = `hsla(${hue},100%,50%,${alpha * 0.4})`;
+
+    // Draw native built-in glow (wider, faint stroke)
+    ctx.globalCompositeOperation = "lighter";
+    ctx.lineWidth = radius * 4;
+    ctx.strokeStyle = colorGlow;
     ctx.beginPath();
     ctx.moveTo(x, y);
     ctx.lineTo(x2, y2);
     ctx.stroke();
-    ctx.closePath();
+
+    // Draw core bright particle
+    ctx.lineWidth = radius;
+    ctx.strokeStyle = colorCore;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+
     ctx.restore();
   };
 
@@ -202,17 +218,8 @@ export const Vortex = (props: VortexProps) => {
     canvas: HTMLCanvasElement,
     ctx: CanvasRenderingContext2D
   ) => {
-    ctx.save();
-    ctx.filter = "blur(8px) brightness(200%)";
-    ctx.globalCompositeOperation = "lighter";
-    ctx.drawImage(canvas, 0, 0);
-    ctx.restore();
-
-    ctx.save();
-    ctx.filter = "blur(4px) brightness(200%)";
-    ctx.globalCompositeOperation = "lighter";
-    ctx.drawImage(canvas, 0, 0);
-    ctx.restore();
+    // Disabled the heavy full-screen CSS blur filters.
+    // The glow is now handled dynamically and natively inside drawParticle for 60FPS flawless smoothness.
   };
 
   const renderToScreen = (
