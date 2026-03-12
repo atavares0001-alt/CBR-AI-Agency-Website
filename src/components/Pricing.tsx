@@ -74,7 +74,7 @@ export const Pricing = () => {
         <div className="text-center mb-16 relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Intelligent Automation <br />
-            <span className="italic font-serif text-white/40">Packages</span>
+            <span className="italic font-serif text-emerald-400">Packages</span>
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto text-lg">
             Choose the level of AI integration that fits your business needs. From essential foundations to total transformation.
@@ -87,6 +87,7 @@ export const Pricing = () => {
               key={tier.name}
               whileHover={{ 
                 y: -12,
+                scale: 1.02,
                 boxShadow: "0 0 50px rgba(52,211,153,0.15), inset 0 0 20px rgba(52,211,153,0.05)",
                 borderColor: "rgba(52,211,153,0.4)"
               }}

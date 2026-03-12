@@ -44,12 +44,12 @@ export const Contact = () => {
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
+        <div className="mb-16 text-center">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Get in <br />
             <span className="italic font-serif text-emerald-400">Touch</span>
           </h2>
-          <p className="text-white/70 max-w-xl text-lg">
+          <p className="text-white/70 max-w-xl text-lg mx-auto">
             Ready to implement an AI automation system? Send us a message and our team will get back to you within 24 hours.
           </p>
         </div>

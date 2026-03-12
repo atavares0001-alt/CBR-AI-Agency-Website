@@ -8,8 +8,8 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Industries />
         <Services />
+        <Industries />
         <Pricing />
         <Process />
         <Contact />

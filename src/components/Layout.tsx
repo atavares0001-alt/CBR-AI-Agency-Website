@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, Bot, Cpu, Zap, BarChart3, MessageSquare, Code2, Globe } from "lucide-react";
 import { Vortex } from "./ui/vortex";
+import { Option4_Blended } from "./ConsultingOptions";
 
 export const Navbar = () => {
   return (
@@ -8,12 +9,12 @@ export const Navbar = () => {
       <div className="glass px-12 py-4 rounded-full flex items-center gap-10">
         <div className="flex items-center gap-3">
           <img src="/logo.png" alt="CBR AI Logo" className="h-8 w-auto" />
-          <div className="text-xl font-bold tracking-tighter">CBR AI Agency</div>
+          <div className="hidden sm:block text-xl font-bold tracking-tighter">CBR AI Agency</div>
         </div>
         <div className="hidden md:flex items-center gap-8 text-base font-medium text-white/60">
           <a href="#overview" className="hover:text-white transition-colors">Overview</a>
-          <a href="#industries" className="hover:text-white transition-colors">Consulting</a>
           <a href="#technology" className="hover:text-white transition-colors">Services</a>
+          <a href="#industries" className="hover:text-white transition-colors">Consulting</a>
           <a href="#process" className="hover:text-white transition-colors">Process</a>
           <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
           <a href="#contact" className="hover:text-white transition-colors">Contact Us</a>
@@ -46,8 +47,8 @@ export const Hero = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center px-4"
         >
-          <h1 
-            className="text-6xl md:text-8xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-[0.9]"
+          <h1
+            className="text-5xl md:text-8xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-[0.9]"
             style={{ textShadow: "0 0 60px rgba(52,211,153,0.35)" }}
           >
             Canberra AI <br />
@@ -64,45 +65,10 @@ export const Hero = () => {
 };
 
 export const Industries = () => {
-  const industries = [
-    { title: "Trades & Construction", items: ["AI for Builders", "Quoting Automation", "Call Answering"] },
-    { title: "Professional Services", items: ["AI for Accountants", "Law Firm Automation", "Document AI"] },
-    { title: "Real Estate", items: ["Lead Generation", "Inspection Scheduling", "Tenant Enquiries"] },
-    { title: "Health & Wellness", items: ["Clinic Receptionists", "Patient Follow-ups", "Smart Waitlists"] }
-  ];
-
   return (
-    <section id="industries" className="py-12 px-6 relative overflow-hidden">
-      {/* Subtle atmospheric glow behind the cards */}
-      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-emerald-500/5 blur-[120px] rounded-full point-events-none -z-10" />
-
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 relative z-10">
-          AI Consulting <br />
-          <span className="italic font-serif text-white/40">Across Every Industry</span>
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {industries.map((ind, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -8 }}
-              className="glass p-8 rounded-3xl border border-emerald-500/20 shadow-2xl hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all bg-gradient-to-b from-white/10 to-transparent flex flex-col h-full group"
-            >
-              <h3 className="text-2xl font-bold mb-6 text-white group-hover:text-emerald-400 transition-colors">{ind.title}</h3>
-              <ul className="space-y-4 mt-auto">
-                {ind.items.map((item, j) => (
-                  <li key={j} className="text-sm md:text-base text-white/60 flex items-center gap-3">
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div id="industries" className="flex flex-col w-full relative">
+      <Option4_Blended />
+    </div>
   );
 };
 
@@ -117,14 +83,14 @@ export const Services = () => {
   ];
 
   return (
-    <section id="technology" className="py-32 px-6 bg-white/5">
+    <section id="technology" className="py-32 pb-48 px-6 bg-[#030303]">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
+        <div className="mb-12 text-center">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
             Business Workflow <br />
-            <span className="italic font-serif text-white/40">Automation Solutions</span>
+            <span className="italic font-serif text-emerald-400">Automation Services</span>
           </h2>
-          <p className="text-lg text-white/50 max-w-2xl">
+          <p className="text-lg text-white/50 max-w-2xl mx-auto">
             We build practical systems that work. No jargon, no hype—just affordable AI automation tailored to how your business actually operates.
           </p>
         </div>
@@ -156,17 +122,17 @@ export const Process = () => {
   ];
 
   return (
-    <section id="process" className="py-20 px-6 relative overflow-hidden">
+    <section id="process" className="py-20 px-6 relative overflow-hidden bg-white/5">
       {/* Decorative prominent background flare */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[100px] rounded-full point-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
+        <div className="mb-16 text-center">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Our Implementation <br />
             <span className="italic font-serif text-emerald-400">Process</span>
           </h2>
-          <p className="text-white/70 max-w-xl text-lg">
+          <p className="text-white/70 max-w-xl text-lg mx-auto">
             A practical, no-fluff approach to implementing AI automation for your Canberra business.
           </p>
         </div>
