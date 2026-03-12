@@ -8,14 +8,14 @@ export const Navbar = () => {
       <div className="glass px-8 py-3 rounded-full flex items-center gap-8">
         <div className="text-xl font-bold tracking-tighter">CBR AI</div>
         <div className="hidden md:flex items-center gap-6 text-sm font-medium text-white/60">
-          <a href="#overview" className="hover:text-white transition-colors">Overview</a>
-          <a href="#industries" className="hover:text-white transition-colors">Industries</a>
-          <a href="#technology" className="hover:text-white transition-colors">Services</a>
-          <a href="#process" className="hover:text-white transition-colors">Process</a>
+          <a href="#overview" aria-label="Skip to Overview Section" className="hover:text-white transition-colors">Overview</a>
+          <a href="#industries" aria-label="Skip to Industries Section" className="hover:text-white transition-colors">Industries</a>
+          <a href="#technology" aria-label="Skip to Services Section" className="hover:text-white transition-colors">Services</a>
+          <a href="#process" aria-label="Skip to Process Section" className="hover:text-white transition-colors">Process</a>
         </div>
         <div className="flex items-center gap-4">
-          <button className="text-sm font-medium text-white/60 hover:text-white transition-colors">Log In</button>
-          <button className="bg-white text-black px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-white/90 transition-colors">Get Started</button>
+          <button aria-label="Log in to client portal" className="text-sm font-medium text-white/60 hover:text-white transition-colors">Log In</button>
+          <button aria-label="Get started by contacting our team" className="bg-white text-black px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-white/90 transition-colors">Get Started</button>
         </div>
       </div>
     </nav>
@@ -57,7 +57,7 @@ export const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="glass px-8 py-4 rounded-full flex items-center gap-2 group hover:bg-white/10 transition-all">
+            <button aria-label="Talk to a Canberra AI Specialist" className="glass px-8 py-4 rounded-full flex items-center gap-2 group hover:bg-white/10 transition-all">
               <Zap className="w-5 h-5 text-emerald-400" />
               <span className="font-semibold">Talk to a Canberra AI Specialist</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -81,25 +81,28 @@ export const Industries = () => {
   ];
 
   return (
-    <section id="industries" className="py-32 px-6">
+    <section id="industries" className="py-32 px-6 relative overflow-hidden">
+      {/* Subtle atmospheric glow behind the cards */}
+      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-emerald-500/5 blur-[120px] rounded-full point-events-none -z-10" />
+      
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-16">
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-16 relative z-10">
           AI Consulting <br />
           <span className="italic font-serif text-white/40">Across Every Industry</span>
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {industries.map((ind, i) => (
             <motion.div 
               key={i}
-              whileHover={{ y: -5 }}
-              className="glass p-8 rounded-[32px] flex flex-col h-full"
+              whileHover={{ y: -8 }}
+              className="glass p-8 rounded-3xl border border-emerald-500/20 shadow-2xl hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all bg-gradient-to-b from-white/10 to-transparent flex flex-col h-full group"
             >
-              <h3 className="text-xl font-bold mb-6">{ind.title}</h3>
-              <ul className="space-y-3 mt-auto">
+              <h3 className="text-2xl font-bold mb-6 text-white group-hover:text-emerald-400 transition-colors">{ind.title}</h3>
+              <ul className="space-y-4 mt-auto">
                 {ind.items.map((item, j) => (
-                  <li key={j} className="text-sm text-white/50 flex items-center gap-2">
-                    <div className="w-1 h-1 bg-emerald-500 rounded-full" />
+                  <li key={j} className="text-sm md:text-base text-white/60 flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
                     {item}
                   </li>
                 ))}
@@ -162,30 +165,37 @@ export const Process = () => {
   ];
 
   return (
-    <section id="process" className="py-32 px-6">
+    <section id="process" className="py-32 px-6 relative overflow-hidden">
+      {/* Decorative prominent background flare */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[100px] rounded-full point-events-none -z-10" />
+      
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
+        <div className="mb-20">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Our Implementation <br />
-            <span className="italic font-serif text-white/40">Process</span>
+            <span className="italic font-serif text-emerald-400">Process</span>
           </h2>
-          <p className="text-white/50 max-w-xl mx-auto">
+          <p className="text-white/70 max-w-xl text-lg">
             A practical, no-fluff approach to implementing AI automation for your Canberra business.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
-          {/* Connector Line */}
-          <div className="hidden lg:block absolute top-1/4 left-0 right-0 h-px bg-white/10 -z-10" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+          {/* Prominent Connector Line */}
+          <div className="hidden lg:block absolute top-[50px] left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-emerald-500/0 -z-10" />
           
           {steps.map((step, i) => (
-            <div key={i} className="relative">
-              <div className="w-12 h-12 glass rounded-full flex items-center justify-center mb-6 font-mono text-emerald-400 font-bold">
+            <motion.div 
+              whileHover={{ y: -8 }} 
+              key={i} 
+              className="relative glass p-8 rounded-3xl border border-emerald-500/20 shadow-2xl hover:shadow-emerald-500/10 transition-shadow bg-gradient-to-b from-white/10 to-transparent"
+            >
+              <div className="w-14 h-14 bg-[#050505] border-2 border-emerald-500 rounded-2xl flex items-center justify-center mb-8 font-mono text-emerald-400 text-xl font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] mx-auto lg:mx-0 relative z-10">
                 0{i + 1}
               </div>
-              <h4 className="text-xl font-bold mb-3">{step.title}</h4>
-              <p className="text-sm text-white/40 leading-relaxed">{step.desc}</p>
-            </div>
+              <h4 className="text-2xl font-bold mb-4 text-white text-center lg:text-left">{step.title}</h4>
+              <p className="text-white/60 leading-relaxed text-center lg:text-left">{step.desc}</p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -233,10 +243,10 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex justify-between items-center text-xs text-white/20">
+      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-white/20 gap-4">
         <div>© 2026 CBR AI Agency — Canberra AI Services & AI Automation. All rights reserved.</div>
         <div className="flex gap-6">
-          <a href="#">LinkedIn</a>
+          <a href="#" aria-label="Visit our LinkedIn page">LinkedIn</a>
         </div>
       </div>
     </footer>
