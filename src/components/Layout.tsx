@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight, Bot, Cpu, Zap, BarChart3, MessageSquare, Code2, Globe } from "lucide-react";
+import { ArrowRight, Bot, Cpu, Zap, BarChart3, MessageSquare, Code2, Globe, Users, Send } from "lucide-react";
 import { Vortex } from "./ui/vortex";
 import { Option4_Blended } from "./ConsultingOptions";
 
@@ -8,15 +8,13 @@ export const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6">
       <div className="glass px-12 py-4 rounded-full flex items-center gap-10">
         <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="CBR AI Logo" className="h-8 w-auto" />
-          <div className="hidden sm:block text-xl font-bold tracking-tighter">CBR AI Agency</div>
         </div>
         <div className="hidden md:flex items-center gap-8 text-base font-medium text-white/60">
           <a href="#overview" className="hover:text-white transition-colors">Overview</a>
           <a href="#technology" className="hover:text-white transition-colors">Services</a>
           <a href="#industries" className="hover:text-white transition-colors">Consulting</a>
-          <a href="#process" className="hover:text-white transition-colors">Process</a>
           <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+          <a href="#process" className="hover:text-white transition-colors">Process</a>
           <a href="#contact" className="hover:text-white transition-colors">Contact Us</a>
         </div>
         <div className="flex items-center gap-4">
@@ -29,9 +27,9 @@ export const Navbar = () => {
 
 export const Hero = () => {
   return (
-    <section id="overview" className="relative pt-16 pb-8 flex flex-col items-center justify-center overflow-hidden min-h-[60vh]">
+    <section id="overview" className="relative pt-16 pb-8 flex flex-col items-center justify-center overflow-hidden min-h-[60vh] scroll-mt-32">
       <Vortex
-        backgroundColor="transparent"
+        backgroundColor="#000000"
         rangeY={800}
         particleCount={200}
         baseHue={150}
@@ -41,24 +39,39 @@ export const Hero = () => {
       >
         <div className="atmosphere absolute inset-0 -z-10" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-center px-4"
-        >
+        <div className="relative z-10 text-center px-4">
           <h1
             className="text-5xl md:text-8xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-[0.9]"
             style={{ textShadow: "0 0 60px rgba(52,211,153,0.35)" }}
           >
-            Canberra AI <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 italic font-serif" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.1)" }}>Agency</span>
+            <motion.span
+              initial={{ opacity: 0, x: -60, filter: "blur(8px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+              className="inline-block"
+            >
+              Canberra AI
+            </motion.span>
+            {" "}
+            <motion.span
+              initial={{ opacity: 0, x: 60, filter: "blur(8px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+              className="inline-block italic font-serif text-emerald-400"
+            >
+              Agency
+            </motion.span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-10 font-light">
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-10 font-light"
+          >
             Practical AI automation to improve productivity. We build intelligent digital receptionists and automation systems that work around the clock.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
       </Vortex>
     </section>
   );
@@ -66,7 +79,7 @@ export const Hero = () => {
 
 export const Industries = () => {
   return (
-    <div id="industries" className="flex flex-col w-full relative">
+    <div id="industries" className="flex flex-col w-full relative scroll-mt-32">
       <Option4_Blended />
     </div>
   );
@@ -79,11 +92,14 @@ export const Services = () => {
     { icon: BarChart3, title: "Lead Qualification", desc: "Qualifies and scores leads so you only talk to the best ones." },
     { icon: Bot, title: "Chatbot Solutions", desc: "Immediate answers for website visitors, day or night." },
     { icon: Code2, title: "Workflow Automation", desc: "Automate quoting, onboarding, and invoicing processes." },
-    { icon: Cpu, title: "Data Analytics", desc: "Turn business data into actionable growth insights." }
+    { icon: Cpu, title: "Data Analytics", desc: "Turn business data into actionable growth insights." },
+    { icon: Users, title: "CRM Integration", desc: "Seamlessly integrate AI with your CRM to automate data entry, lead tracking, and follow-ups." },
+    { icon: Globe, title: "AI-Powered Websites", desc: "Modern, high-performance websites with built-in AI capabilities, virtual receptionists, and smart scheduling." },
+    { icon: Send, title: "Email Automation", desc: "Smart email sequences and AI-driven responses that nurture leads and handle enquiries automatically." }
   ];
 
   return (
-    <section id="technology" className="py-32 pb-48 px-6 bg-[#030303]">
+    <section id="technology" className="py-32 px-6 bg-[#030303] scroll-mt-32">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 text-center">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
@@ -115,14 +131,14 @@ export const Services = () => {
 
 export const Process = () => {
   const steps = [
-    { title: "Discovery Call", desc: "We identify automation opportunities where AI can save you the most time and money." },
+    { title: "Discovery Process", desc: "We identify automation opportunities where AI can save you the most time and money." },
     { title: "Custom Strategy", desc: "A tailored plan built around your specific workflows and business goals." },
     { title: "Build & Deploy", desc: "We integrate AI with your existing tools with minimal disruption to your operations." },
     { title: "Optimise & Support", desc: "Ongoing monitoring and support to ensure your AI systems get smarter over time." }
   ];
 
   return (
-    <section id="process" className="py-20 px-6 relative overflow-hidden bg-white/5">
+    <section id="process" className="py-20 px-6 relative overflow-hidden bg-white/5 scroll-mt-32">
       {/* Decorative prominent background flare */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[100px] rounded-full point-events-none -z-10" />
 
@@ -162,31 +178,23 @@ export const Process = () => {
 
 export const Footer = () => {
   return (
-    <footer id="resources" className="py-20 px-6 border-t border-white/10">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12">
-        <div className="max-w-xs">
-          <div className="text-2xl font-bold tracking-tighter mb-4">CBR AI</div>
-          <p className="text-sm text-white/40">
-            Practical AI automation and business AI solutions for Canberra small businesses.
-          </p>
-        </div>
+    <footer id="resources" className="py-8 px-6 border-t border-white/10">
+      <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
+        <div className="text-3xl font-bold tracking-tighter">CBR AI Agency</div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h5 className="font-bold mb-4 text-sm uppercase tracking-widest text-white/30">Agency</h5>
-            <ul className="space-y-2 text-sm text-white/60">
-              <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="mailto:info@cbrai.com.au" className="hover:text-white transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Canberra, ACT</a></li>
-            </ul>
-          </div>
-        </div>
+        <nav>
+          <ul className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium text-white/50 uppercase tracking-widest">
+            <li><a href="#overview" className="hover:text-emerald-400 transition-colors">Overview</a></li>
+            <li><a href="#technology" className="hover:text-emerald-400 transition-colors">Services</a></li>
+            <li><a href="#industries" className="hover:text-emerald-400 transition-colors">Consulting</a></li>
+            <li><a href="#pricing" className="hover:text-emerald-400 transition-colors">Pricing</a></li>
+            <li><a href="#process" className="hover:text-emerald-400 transition-colors">Process</a></li>
+            <li><a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-white/20 gap-4">
+      <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-white/5 flex flex-col items-center text-xs text-white/20">
         <div>© 2026 CBR AI Agency — Canberra AI Services & AI Automation. All rights reserved.</div>
-        <div className="flex gap-6">
-          <a href="#" aria-label="Visit our LinkedIn page">LinkedIn</a>
-        </div>
       </div>
     </footer>
   );

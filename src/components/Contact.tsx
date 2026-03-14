@@ -39,7 +39,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative overflow-hidden">
+    <section id="contact" className="py-24 px-6 relative overflow-hidden scroll-mt-32">
       {/* Subtle atmospheric glow */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
