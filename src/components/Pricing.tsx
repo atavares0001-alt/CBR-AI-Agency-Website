@@ -110,7 +110,7 @@ export const Pricing = () => {
               )}
 
               {/* CARD HEADER */}
-              <div className="mb-10 text-left relative z-10">
+              <div className="mb-6 text-left relative z-10">
                 <div className="flex items-center gap-4 mb-2">
                   <div className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${tier.recommended
                     ? "bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-400 group-hover:text-black transition-colors duration-300"
@@ -120,18 +120,12 @@ export const Pricing = () => {
                   </div>
                   <h3 className="text-3xl font-bold group-hover:text-emerald-400 transition-colors duration-300">{tier.name}</h3>
                 </div>
-                <p className="text-white/40 text-sm mb-12 h-5 pl-14">{tier.subtitle}</p>
+                <p className="text-white/40 text-sm h-5 pl-14">{tier.subtitle}</p>
 
-                <div className="flex items-start">
-                  <span className="text-5xl md:text-6xl font-bold tracking-tight">{tier.price}</span>
-                  {tier.billing && (
-                    <span className="text-white/40 text-lg font-semibold mt-6 ml-2">{tier.billing}</span>
-                  )}
-                </div>
               </div>
 
               {/* FEATURES LIST */}
-              <ul className="space-y-6 flex-grow mb-16 relative z-10">
+              <ul className="space-y-5 flex-grow mb-10 relative z-10">
                 {tier.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-4 text-white/80 transition-colors group-hover:text-white">
                     <div

@@ -31,7 +31,7 @@ export const Vortex = (props: VortexProps) => {
   const baseRadius = props.baseRadius || 1;
   const rangeRadius = props.rangeRadius || 2;
   const baseHue = props.baseHue || 220;
-  const rangeHue = 100;
+  const rangeHue = 30;
   const noiseSteps = 3;
   const xOff = 0.00125;
   const yOff = 0.00125;
@@ -174,8 +174,27 @@ export const Vortex = (props: VortexProps) => {
     ctx.lineCap = "round";
     
     const alpha = fadeInOut(life, ttl);
-    const colorCore = `hsla(${hue},100%,70%,${alpha})`;
-    const colorGlow = `hsla(${hue},100%,50%,${alpha * 0.4})`;
+    
+    // Weighted colour: ~50% green, ~35% white, ~15% blue
+    let displayHue = hue;
+    let saturation = 100;
+    let lightness = 70;
+    let glowLightness = 50;
+    const colorRoll = (hue - baseHue) / rangeHue; // 0-1 normalized
+    if (colorRoll > 0.85) {
+      // Blue accent (~15%)
+      displayHue = 210;
+      saturation = 80;
+    } else if (colorRoll > 0.5) {
+      // White particles (~35%)
+      saturation = 10;
+      lightness = 90;
+      glowLightness = 80;
+    }
+    // else: green (default ~50%)
+    
+    const colorCore = `hsla(${displayHue},${saturation}%,${lightness}%,${alpha})`;
+    const colorGlow = `hsla(${displayHue},${saturation}%,${glowLightness}%,${alpha * 0.4})`;
 
     // Draw native built-in glow (wider, faint stroke)
     ctx.globalCompositeOperation = "lighter";
