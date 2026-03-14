@@ -68,7 +68,7 @@ export const Contact = () => {
                 <CheckCircle2 className="w-20 h-20 text-emerald-400 mb-6" />
                 <h3 className="text-3xl font-bold mb-4">Message Sent</h3>
                 <p className="text-white/70 text-lg">Thank you for reaching out. A specialist will contact you shortly.</p>
-                <button 
+                <button
                   onClick={() => setFormStatus("idle")}
                   className="mt-8 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-white font-medium"
                 >
@@ -165,12 +165,13 @@ export const Contact = () => {
           {/* Contact Info */}
           <div className="lg:col-span-5 flex flex-col justify-center">
             <div className="glass p-8 md:p-10 rounded-3xl border border-white/5 h-full flex flex-col justify-center">
-              <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                <span className="w-8 h-[2px] bg-emerald-500 block"></span>
-                Other ways to connect
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 flex items-center justify-center gap-4">
+                <span className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]" />
+                Connect With Us
+                <span className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]" />
               </h3>
               <p className="text-white/60 text-lg leading-relaxed mb-12">
-                Prefer to communicate directly? Reach out to our local Canberra team using the details below. We typically respond within standard business hours (AEST).
+                Prefer to communicate directly? Reach out to our local Canberra team using the details below.
               </p>
 
               <div className="space-y-10">
@@ -181,6 +182,16 @@ export const Contact = () => {
                   <div className="pt-1">
                     <h4 className="font-bold text-lg mb-1 tracking-wide">Email Us</h4>
                     <a href="mailto:info@cbrai.com.au" className="text-white/50 hover:text-white transition-colors text-lg">info@cbrai.com.au</a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-5 group">
+                  <div className="flex-shrink-0 w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30 transition-all">
+                    <Phone className="w-6 h-6 text-emerald-400" />
+                  </div>
+                  <div className="pt-1">
+                    <h4 className="font-bold text-lg mb-1 tracking-wide">Call Us</h4>
+                    <a href="tel:" className="text-white/50 hover:text-white transition-colors text-lg"> </a>
                   </div>
                 </div>
 

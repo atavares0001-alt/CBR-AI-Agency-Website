@@ -49,10 +49,10 @@ export const Option4_Blended = () => {
       pains: [
         { label: "Talent Drain", desc: "Talented staff buried in data entry and documentation" },
         { label: "Costly Repetition", desc: "Paying senior wages for low-level, repetitive tasks" },
-        { label: "Compliance Overload", desc: "Entire days lost to compliance and documentation" }
+        { label: "Information Overload", desc: "Hours wasted on compliance searching through emails and files" }
       ],
       solutions: [
-        { label: "AI Drafting", desc: "AI drafts contracts and summarises meetings in seconds" },
+        { label: "AI Drafting", desc: "AI automates the grunt work; you focus on high-value strategy" },
         { label: "Scale Without Hiring", desc: "Double your output without adding a single headcount" },
         { label: "Agentic Workflows", desc: "Automated processes and workflows through Agentic Agents" }
       ]
