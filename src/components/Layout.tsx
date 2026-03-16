@@ -1,33 +1,97 @@
-import { motion } from "motion/react";
-import { ArrowRight, Bot, Cpu, Zap, BarChart3, MessageSquare, Code2, Globe, Users, Send } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect } from "react";
+import { ArrowRight, Bot, Cpu, Zap, BarChart3, MessageSquare, Code2, Globe, Users, Send, Menu, X } from "lucide-react";
 import { Vortex } from "./ui/vortex";
 import { Option4_Blended } from "./ConsultingOptions";
 
+const navLinks = [
+  { href: "#overview", label: "Overview" },
+  { href: "#technology", label: "Services" },
+  { href: "#industries", label: "Industries" },
+  { href: "#pricing", label: "Packages" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#process", label: "Process" },
+  { href: "#contact", label: "Contact Us" },
+];
+
 export const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const handler = () => { if (mq.matches) setMobileOpen(false); };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6">
-      <div className="glass px-12 py-4 rounded-full flex items-center gap-10">
-        <div className="flex items-center gap-3">
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 md:p-6">
+        <div className="glass px-6 md:px-12 py-3 md:py-4 rounded-full flex items-center gap-6 md:gap-10">
+          {/* Hamburger button — mobile only */}
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            className="md:hidden text-white/70 hover:text-white transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-8 text-base font-medium text-white/60">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} className="hover:text-white transition-colors">{l.label}</a>
+            ))}
+          </div>
+
+          <a href="#contact" className="bg-white text-black px-6 py-2 rounded-full text-sm md:text-base font-bold hover:bg-white/90 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)] whitespace-nowrap">
+            Get Started
+          </a>
         </div>
-        <div className="hidden md:flex items-center gap-8 text-base font-medium text-white/60">
-          <a href="#overview" className="hover:text-white transition-colors">Overview</a>
-          <a href="#technology" className="hover:text-white transition-colors">Services</a>
-          <a href="#industries" className="hover:text-white transition-colors">Consulting</a>
-          <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
-          <a href="#process" className="hover:text-white transition-colors">Process</a>
-          <a href="#contact" className="hover:text-white transition-colors">Contact Us</a>
-        </div>
-        <div className="flex items-center gap-4">
-          <a href="#contact" className="bg-white text-black px-6 py-2 rounded-full text-base font-bold hover:bg-white/90 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)]">Get Started</a>
-        </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile menu overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-black/90 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
+          >
+            <nav className="flex flex-col items-center gap-6">
+              {navLinks.map((l, i) => (
+                <motion.a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMobileOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="text-2xl font-semibold text-white/80 hover:text-emerald-400 transition-colors"
+                >
+                  {l.label}
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
 export const Hero = () => {
   return (
-    <section id="overview" className="relative pt-16 pb-8 flex flex-col items-center justify-center overflow-hidden min-h-[60vh] scroll-mt-32">
+    <section id="overview" className="relative flex flex-col items-center justify-center overflow-hidden min-h-svh scroll-mt-32">
       <Vortex
         backgroundColor="#000000"
         rangeY={800}
@@ -118,7 +182,7 @@ export const Services = () => {
                 <s.icon className="w-7 h-7 text-emerald-400" />
               </div>
               <div>
-                <h4 className="text-xl font-bold mb-2">{s.title}</h4>
+                <h3 className="text-xl font-bold mb-2">{s.title}</h3>
                 <p className="text-sm text-white/40 leading-relaxed">{s.desc}</p>
               </div>
             </div>
@@ -138,7 +202,7 @@ export const Process = () => {
   ];
 
   return (
-    <section id="process" className="py-20 px-6 relative overflow-hidden bg-white/5 scroll-mt-32">
+    <section id="process" className="py-20 px-6 relative overflow-hidden bg-[#030303] scroll-mt-32">
       {/* Decorative prominent background flare */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[100px] rounded-full point-events-none -z-10" />
 
@@ -166,7 +230,7 @@ export const Process = () => {
               <div className="w-14 h-14 bg-[#050505] border-2 border-emerald-500 rounded-2xl flex items-center justify-center mb-8 font-mono text-emerald-400 text-xl font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] mx-auto lg:mx-0 relative z-10">
                 0{i + 1}
               </div>
-              <h4 className="text-2xl font-bold mb-4 text-white text-center lg:text-left">{step.title}</h4>
+              <h3 className="text-2xl font-bold mb-4 text-white text-center lg:text-left">{step.title}</h3>
               <p className="text-white/60 leading-relaxed text-center lg:text-left">{step.desc}</p>
             </motion.div>
           ))}
@@ -186,8 +250,9 @@ export const Footer = () => {
           <ul className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium text-white/50 uppercase tracking-widest">
             <li><a href="#overview" className="hover:text-emerald-400 transition-colors">Overview</a></li>
             <li><a href="#technology" className="hover:text-emerald-400 transition-colors">Services</a></li>
-            <li><a href="#industries" className="hover:text-emerald-400 transition-colors">Consulting</a></li>
-            <li><a href="#pricing" className="hover:text-emerald-400 transition-colors">Pricing</a></li>
+            <li><a href="#industries" className="hover:text-emerald-400 transition-colors">Industries</a></li>
+            <li><a href="#pricing" className="hover:text-emerald-400 transition-colors">Packages</a></li>
+            <li><a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a></li>
             <li><a href="#process" className="hover:text-emerald-400 transition-colors">Process</a></li>
             <li><a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a></li>
           </ul>

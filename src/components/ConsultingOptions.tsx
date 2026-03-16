@@ -126,7 +126,7 @@ export const Option4_Blended = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-transparent transition-colors duration-500 pointer-events-none" />
                   <h4 className="text-2xl md:text-3xl font-bold mb-8 text-rose-400/80 relative z-10 flex items-center justify-center gap-4">
                     <span className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-rose-500/50 shadow-[0_0_10px_rgba(244,63,94,0.3)]" />
-                    The Old Way
+                    Prior to AI
                     <span className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-rose-500/50 shadow-[0_0_10px_rgba(244,63,94,0.3)]" />
                   </h4>
 

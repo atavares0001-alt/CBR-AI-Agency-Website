@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { Check, Box, Zap, Building2 } from "lucide-react";
 
@@ -70,6 +71,13 @@ const tiers = [
 ];
 
 export const Pricing = () => {
+  const [hoveredTier, setHoveredTier] = useState<string | null>(null);
+
+  const isFilled = (tierName: string, recommended: boolean) => {
+    if (hoveredTier === null) return recommended;
+    return hoveredTier === tierName;
+  };
+
   return (
     <section id="pricing" className="py-20 px-6 bg-[#030303] text-white scroll-mt-32">
       <div className="max-w-7xl mx-auto">
@@ -87,6 +95,8 @@ export const Pricing = () => {
           {tiers.map((tier) => (
             <motion.div
               key={tier.name}
+              onMouseEnter={() => setHoveredTier(tier.name)}
+              onMouseLeave={() => setHoveredTier(null)}
               whileHover={{
                 y: -12,
                 scale: 1.02,
@@ -129,9 +139,9 @@ export const Pricing = () => {
                 {tier.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-4 text-white/80 transition-colors group-hover:text-white">
                     <div
-                      className={`flex items-center justify-center w-6 h-6 rounded-full shrink-0 transition-colors duration-300 ${tier.recommended
+                      className={`flex items-center justify-center w-6 h-6 rounded-full shrink-0 transition-colors duration-300 ${isFilled(tier.name, tier.recommended)
                         ? "bg-emerald-400 text-black shadow-[0_0_10px_rgba(52,211,153,0.4)]"
-                        : "bg-white/5 border border-white/10 text-white/40 group-hover:border-emerald-500/50 group-hover:text-emerald-400"
+                        : "border border-emerald-500/50 text-emerald-400"
                         }`}
                     >
                       <Check className="w-3.5 h-3.5 font-bold" strokeWidth={3} />
@@ -142,14 +152,15 @@ export const Pricing = () => {
               </ul>
 
               {/* CTA BUTTON */}
-              <button
-                className={`relative z-10 w-full py-5 rounded-2xl font-bold transition-all duration-300 active:scale-95 text-lg ${tier.recommended
+              <a
+                href="#contact"
+                className={`relative z-10 w-full py-5 rounded-2xl font-bold transition-all duration-300 active:scale-95 text-lg block text-center ${tier.recommended
                   ? "bg-emerald-400 text-black hover:bg-emerald-300 shadow-[0_0_30px_rgba(52,211,153,0.25)] hover:shadow-[0_0_40px_rgba(52,211,153,0.4)]"
                   : "bg-white/5 text-white hover:bg-emerald-500/20 hover:text-emerald-400 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.15)]"
                   }`}
               >
                 {tier.ctaText}
-              </button>
+              </a>
             </motion.div>
           ))}
         </div>
