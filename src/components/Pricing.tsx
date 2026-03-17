@@ -9,8 +9,6 @@ const tiers = [
   {
     name: "Foundation",
     subtitle: "Essential baseline",
-    price: "$390",
-    billing: "/mo",
     description: "Essential AI tools to establish your immediate productivity baseline.",
     features: [
       "AI Business Assessment",
@@ -26,8 +24,6 @@ const tiers = [
   {
     name: "Acceleration",
     subtitle: "Most popular choice",
-    price: "$790",
-    billing: "/mo",
     description: "Accelerate growth globally with advanced marketing and CRM.",
     features: [
       "AI Business Assessment",
@@ -47,8 +43,6 @@ const tiers = [
   {
     name: "Transformation",
     subtitle: "For market leaders",
-    price: "Custom",
-    billing: "",
     description: "Total operational overhaul with autonomous agents and deep analytics.",
     features: [
       "AI Business Assessment",
@@ -104,7 +98,7 @@ export const Pricing = () => {
                 borderColor: "rgba(52,211,153,0.4)"
               }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className={`group relative flex-1 rounded-[2.5rem] bg-[#0f0f12] p-10 md:p-12 font-sans border flex flex-col transition-colors duration-500 ${tier.recommended
+              className={`group relative w-full flex-1 rounded-[2.5rem] bg-[#0f0f12] p-8 md:p-12 font-sans border flex flex-col transition-colors duration-500 ${tier.recommended
                 ? "border-emerald-500/30 shadow-[0_0_50px_rgba(52,211,153,0.08)]"
                 : "border-white/5"
                 }`}
@@ -130,7 +124,7 @@ export const Pricing = () => {
                   </div>
                   <h3 className="text-3xl font-bold group-hover:text-emerald-400 transition-colors duration-300">{tier.name}</h3>
                 </div>
-                <p className="text-white/40 text-sm h-5 pl-14">{tier.subtitle}</p>
+                <p className="text-white/40 text-sm pl-14">{tier.subtitle}</p>
 
               </div>
 

@@ -35,10 +35,9 @@ export const Navbar = () => {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 md:p-6">
         <div className="glass px-6 md:px-12 py-3 md:py-4 rounded-full flex items-center gap-6 md:gap-10">
-          {/* Hamburger button — mobile only */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
-            className="md:hidden text-white/70 hover:text-white transition-colors"
+            className="md:hidden text-white/70 hover:text-white transition-colors shrink-0"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -91,7 +90,7 @@ export const Navbar = () => {
 
 export const Hero = () => {
   return (
-    <section id="overview" className="relative flex flex-col items-center justify-center overflow-hidden min-h-svh scroll-mt-32">
+    <section id="overview" className="relative flex flex-col items-center justify-center overflow-hidden h-svh scroll-mt-32">
       <Vortex
         backgroundColor="#000000"
         rangeY={800}
@@ -105,7 +104,7 @@ export const Hero = () => {
 
         <div className="relative z-10 text-center px-4">
           <h1
-            className="text-5xl md:text-8xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-[0.9]"
+            className="text-4xl md:text-8xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-[1.1] md:leading-[0.9]"
             style={{ textShadow: "0 0 60px rgba(52,211,153,0.35)" }}
           >
             <motion.span

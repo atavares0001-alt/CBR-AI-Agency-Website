@@ -88,12 +88,12 @@ export const Option4_Blended = () => {
         </div>
 
         {/* Industry Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-14">
+        <div className="flex flex-nowrap md:flex-wrap items-center justify-start md:justify-center gap-3 mb-14 overflow-x-auto hide-scrollbar px-4 pb-4 -mx-6 md:mx-0">
           {industries.map((ind, idx) => (
             <button
               key={ind.id}
               onClick={() => setActiveTab(idx)}
-              className={`px-6 py-3 rounded-full font-bold text-sm md:text-base border transition-all duration-300 ${activeTab === idx
+              className={`px-5 py-2.5 rounded-full font-bold text-sm md:text-base border transition-all duration-300 whitespace-nowrap shrink-0 ${activeTab === idx
                 ? "bg-emerald-500 text-black border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
                 : "bg-black/50 text-white/50 border-white/10 hover:border-emerald-500/50 hover:text-white"
                 }`}

@@ -5,7 +5,7 @@ import { Contact } from "./components/Contact";
 
 export default function App() {
   return (
-    <div className="relative selection:bg-emerald-500/30">
+    <div className="relative selection:bg-emerald-500/30 overflow-x-hidden">
       <Navbar />
       <main>
         <Hero />

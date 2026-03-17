@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, Phone, MapPin, Loader2, CheckCircle2 } from "lucide-react";
+import { Send, Mail, MapPin, Loader2, CheckCircle2 } from "lucide-react";
 
 export const Contact = () => {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -111,16 +111,28 @@ export const Contact = () => {
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-white/70 ml-1">Work Email</label>
-                  <input
-                    type="email"
-                    name="Email"
-                    id="email"
-                    required
-                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all text-white placeholder:text-white/20"
-                    placeholder="john@company.com"
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium text-white/70 ml-1">Work Email</label>
+                    <input
+                      type="email"
+                      name="Email"
+                      id="email"
+                      required
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all text-white placeholder:text-white/20"
+                      placeholder="john@company.com"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="text-sm font-medium text-white/70 ml-1">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="Phone"
+                      id="phone"
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all text-white placeholder:text-white/20"
+                      placeholder="0412 345 678"
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -182,16 +194,6 @@ export const Contact = () => {
                   <div className="pt-1">
                     <h4 className="font-bold text-lg mb-1 tracking-wide">Email Us</h4>
                     <a href="mailto:info@cbrai.com.au" className="text-white/50 hover:text-white transition-colors text-lg">info@cbrai.com.au</a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-5 group">
-                  <div className="flex-shrink-0 w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30 transition-all">
-                    <Phone className="w-6 h-6 text-emerald-400" />
-                  </div>
-                  <div className="pt-1">
-                    <h4 className="font-bold text-lg mb-1 tracking-wide">Call Us</h4>
-                    <a href="tel:" className="text-white/50 hover:text-white transition-colors text-lg"> </a>
                   </div>
                 </div>
 
