@@ -33,8 +33,8 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 md:p-6">
-        <div className="glass px-6 md:px-12 py-3 md:py-4 rounded-full flex items-center gap-6 md:gap-10">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-2 md:p-6">
+        <div className="glass px-4 md:px-12 py-2.5 md:py-4 rounded-full flex items-center gap-4 md:gap-10">
           <button
             onClick={() => setMobileOpen((v) => !v)}
             className="md:hidden text-white/70 hover:text-white transition-colors shrink-0"
