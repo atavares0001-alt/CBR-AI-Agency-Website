@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import { ArrowRight, Bot, Cpu, Zap, BarChart3, MessageSquare, Code2, Globe, Users, Send, Menu, X } from "lucide-react";
+import { ArrowRight, Bot, Cpu, Zap, BarChart3, MessageSquare, Code2, Globe, Users, Send, Menu, X, BrainCircuit, ClipboardCheck, Share2 } from "lucide-react";
 import { Vortex } from "./ui/vortex";
 import { Option4_Blended } from "./ConsultingOptions";
 
@@ -102,7 +102,15 @@ export const Hero = () => {
       >
         <div className="atmosphere absolute inset-0 -z-10" />
 
-        <div className="relative z-10 text-center px-4">
+        <div className="relative z-10 text-center px-4 flex flex-col items-center">
+          <motion.img
+            src="/branding/cbr-icon-transparent.png"
+            alt="Canberra AI Agency Icon"
+            initial={{ opacity: 0, scale: 0.8, filter: "blur(8px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="w-24 md:w-32 mb-6 drop-shadow-[0_0_30px_rgba(52,211,153,0.4)]"
+          />
           <h1
             className="text-4xl md:text-8xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-[1.1] md:leading-[0.9]"
             style={{ textShadow: "0 0 60px rgba(52,211,153,0.35)" }}
@@ -155,10 +163,13 @@ export const Services = () => {
     { icon: BarChart3, title: "Lead Qualification", desc: "Qualifies and scores leads so you only talk to the best ones." },
     { icon: Bot, title: "Chatbot Solutions", desc: "Immediate answers for website visitors, day or night." },
     { icon: Code2, title: "Workflow Automation", desc: "Automate quoting, onboarding, and invoicing processes." },
-    { icon: Cpu, title: "Data Analytics", desc: "Turn business data into actionable growth insights." },
-    { icon: Users, title: "CRM Integration", desc: "Seamlessly integrate AI with your CRM to automate data entry, lead tracking, and follow-ups." },
+    { icon: BrainCircuit, title: "Autonomous AI Agents", desc: "Self-operating AI systems that perform complex tasks, make decisions, and complete workflows without human intervention." },
+    { icon: Share2, title: "Social Media Content", desc: "Automate the generation and scheduling of engaging, brand-aligned content across your social platforms." },
     { icon: Globe, title: "AI-Powered Websites", desc: "Modern, high-performance websites with built-in AI capabilities, virtual receptionists, and smart scheduling." },
-    { icon: Send, title: "Email Automation", desc: "Smart email sequences and AI-driven responses that nurture leads and handle enquiries automatically." }
+    { icon: Send, title: "Email Automation", desc: "Smart email sequences and AI-driven responses that nurture leads and handle enquiries automatically." },
+    { icon: ClipboardCheck, title: "AI Business Assessment", desc: "Comprehensive evaluation of your current business, processes, and software to improve productivity and create efficiencies" },
+    { icon: Cpu, title: "Data Analytics", desc: "Turn business data into actionable growth insights." },
+    { icon: Users, title: "CRM Integration", desc: "Seamlessly integrate AI with your CRM to automate data entry, lead tracking, and follow-ups." }
   ];
 
   return (
